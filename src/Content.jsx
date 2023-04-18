@@ -13,10 +13,11 @@ export function Content() {
       setPosts(response.data);
     });
   };
-  const handleShowPost = () => {
+  const handleShowPost = (post) => {
     setIsPostsShowVisible(true);
+    setCurrentPost(post);
   };
-
+  const [currentPost, setCurrentPost] = useState({});
   const handleClose = () => {
     setIsPostsShowVisible(false);
   };
@@ -26,7 +27,7 @@ export function Content() {
       <PostsNew />
       <PostsIndex posts={posts} onShowPost={handleShowPost} />
       <Modal show={isPostsShowVisible} onClose={handleClose}>
-        <p>TEST</p>
+        <h2>Title: {currentPost.title}</h2>
       </Modal>
     </div>
   );
