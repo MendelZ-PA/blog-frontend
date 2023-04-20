@@ -1,2 +1,7 @@
-export function show={isPostsShowVisible} onClose={handleClose}
-        <h2>Title: {currentPost.title}</h2>
+export function PostsShow() {
+  return (
+    <div>
+      <h1>PostShow</h1>
+    </div>
+  );
+}

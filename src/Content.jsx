@@ -27,12 +27,14 @@ export function Content() {
   useEffect(handleIndexPosts, []);
   return (
     <div>
+      <Signup />
+      <Login />
+      <LogoutLink />
       <PostsNew />
       <PostsIndex posts={posts} onShowPost={handleShowPost} />
       <Modal show={isPostsShowVisible} onClose={handleClose}>
-        <p>test</p>
+        <PostsShow />
       </Modal>
     </div>
   );
-  <div className="container"></div>;
 }
