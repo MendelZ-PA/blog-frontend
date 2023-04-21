@@ -20,10 +20,18 @@ export function Content() {
   const handleShowPost = () => {
     setIsPostsShowVisible(true);
   };
-  const handleCreatePost = (params) => {
+  const handleUpdatePost = (params) => {
     axios.post("http://localhost:3000/posts.json", params).then((response) => {
-      console.log(response);
-      setPosts([...posts, response.data]);
+      console.log(response.data);
+      setPosts(
+        posts.map((post) => {
+          if (post.id === response.data.id) {
+            return response.data;
+          } else {
+            return post;
+          }
+        })
+      );
     });
   };
   useEffect(handleIndexPosts, []);
@@ -35,7 +43,7 @@ export function Content() {
       <LogoutLink />
       <PostsIndex posts={posts} onShowPost={handleShowPost} />
       <Modal show={isPostsShowVisible} onClose={handleClose}>
-        <PostsShow post={currentPost} />
+        <PostsShow post={currentPost} onUpdatePost={handleUpdatePost} />
       </Modal>
     </div>
   );
