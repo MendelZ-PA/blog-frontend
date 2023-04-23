@@ -8,12 +8,18 @@ export function PostsShow(props) {
       event.target.reset();
     });
   };
+
+  const handleClick = () => {
+    props.onDeletePost(props.post);
+  };
+
   return (
     <div>
       <h2>{props.post.title}</h2>
       <p>Body: {props.post.body}</p>
       <p>Image: {props.post.image}</p>
       <h2>Edit Post</h2>
+      <button onClick={handleClick}>Delete post</button>
       <form onSubmit={handleSubmit}>
         <div>
           Title: <input defaultValue={props.post.title} name="title" type="text" />

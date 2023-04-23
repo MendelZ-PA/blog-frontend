@@ -19,8 +19,9 @@ export function Content() {
       setPosts(response.data);
     });
   };
-  const handleShowPost = () => {
+  const handleShowPost = (post) => {
     setIsPostsShowVisible(true);
+    setCurrentPost(post);
   };
 
   const handleClose = () => {
@@ -48,6 +49,17 @@ export function Content() {
       );
     });
   };
+
+  const handleDeletePost = (post) => {
+    console.log("Hello");
+    axios.delete(`http://localhost:3000/posts/${post.id}.json`).then((response) => {
+      console.log(response.data);
+      setPosts(posts.filter((r) => r.id !== post.id));
+      handleClose();
+    });
+    console.log("Hello!!!");
+  };
+
   useEffect(handleIndexPosts, []);
   return (
     <div>
@@ -57,7 +69,7 @@ export function Content() {
       <LogoutLink />
       <PostsIndex posts={posts} onShowPost={handleShowPost} />
       <Modal show={isPostsShowVisible} onClose={handleClose}>
-        <PostsShow post={currentPost} onUpdatePost={handleUpdatePost} />
+        <PostsShow post={currentPost} onUpdatePost={handleUpdatePost} onDeletePost={handleDeletePost} />
       </Modal>
     </div>
   );
