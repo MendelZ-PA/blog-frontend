@@ -6,8 +6,22 @@ html {
   scroll-behavior: smooth;
 }
 #root {
-  https://fonts.google.com/specimen/Pacifico?preview.size=50
+  https://fonts.google.com/specimen/Pacifico?preview.size=60
 }
 #bg-image {
   https://www.toptal.com/designers/subtlepatterns/cork-board-pattern/
+}
+
+#bg-color {
+
+}
+
+#banner {
+  display: block;
+  list-style-type: disc;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 40px;
 }

@@ -1,0 +1,57 @@
+.header img {
+  float: center;
+  background: #555;
+}
+
+.header h1 {
+  font-family: "Lucida Sans Typewriter",Georgia,Arial;
+  position: relative;
+  top: 18px;
+  left: 10px;
+  padding-left: 40%;
+  background-color:#942424;
+}
+
+.nav{
+  width: 95%;
+  margin: auto;
+}
+
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #3c9945;
+  text-align: center;
+}
+
+.nav li {
+  font-family: "Lucida Sans Typewriter",Georgia,Arial;
+  font-size: 16px;
+  display: inline;
+  height: 40px;
+  width: 19.925%;
+  float: left;
+}
+
+.nav li a {
+  display: block;
+  color: white;
+  text-decoration: none;
+}
+
+.nav li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+
+.nav li:last-child{
+border-right: none;
+}
+
+.banner {background:#123}
+.main {background:#456}

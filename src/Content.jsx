@@ -62,7 +62,7 @@ export function Content() {
 
   useEffect(handleIndexPosts, []);
   return (
-    <div>
+    <div className="container">
       <Signup />
       <Login />
       <PostsNew onCreatePost={handleCreatePost} />
