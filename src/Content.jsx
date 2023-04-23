@@ -11,6 +11,8 @@ import { LogoutLink } from "./LogoutLink";
 export function Content() {
   const [posts, setPosts] = useState([]);
   const [isPostsShowVisible, setIsPostsShowVisible] = useState(false);
+  const [currentPost, setCurrentPost] = useState({});
+
   const handleIndexPosts = () => {
     axios.get("http://localhost:3000/posts.json").then(function (response) {
       console.log(response);
@@ -20,6 +22,18 @@ export function Content() {
   const handleShowPost = () => {
     setIsPostsShowVisible(true);
   };
+
+  const handleClose = () => {
+    setIsPostsShowVisible(false);
+  };
+
+  const handleCreatePost = (params) => {
+    axios.post("http://localhost:3000/posts.json", params).then((response) => {
+      console.log(response.data);
+      setPosts(...posts, response.data);
+    });
+  };
+
   const handleUpdatePost = (params) => {
     axios.post("http://localhost:3000/posts.json", params).then((response) => {
       console.log(response.data);
