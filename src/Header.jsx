@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function Header() {
   return (
     <nav class="navbar navbar-expand-lg" style={{ backgroundColor: "#81de59" }}>
@@ -35,6 +37,7 @@ export function Header() {
             </li>
           </ul>
         </div>
+        <Link to="/about">About</Link>
       </div>
     </nav>
   );

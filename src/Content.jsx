@@ -7,6 +7,7 @@ import { PostsShow } from "./PostsShow";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { LogoutLink } from "./LogoutLink";
+import { Routes } from "react-router-dom";
 
 export function Content() {
   const [posts, setPosts] = useState([]);
@@ -63,6 +64,9 @@ export function Content() {
   useEffect(handleIndexPosts, []);
   return (
     <div className="container">
+      <Routes>
+        <Route path="/about" element={<About />} />
+      </Routes>
       <Signup />
       <Login />
       <PostsNew onCreatePost={handleCreatePost} />
