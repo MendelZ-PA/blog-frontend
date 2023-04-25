@@ -1,13 +1,14 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import { PostsNew } from "./PostsNew";
 import { PostsIndex } from "./PostsIndex";
 import { Modal } from "./Modal";
 import { PostsShow } from "./PostsShow";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
+import { PostsShowPage } from "./PostsShowPage";
 import { LogoutLink } from "./LogoutLink";
-import { Routes } from "react-router-dom";
 
 export function Content() {
   const [posts, setPosts] = useState([]);
@@ -65,13 +66,15 @@ export function Content() {
   return (
     <div className="container">
       <Routes>
-        <Route path="/about" element={<About />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/posts/new" element={<PostsNew onCreatePost={handleCreatePost} />} />
+        <Route path="/posts" element={<PostsShow onShowPost={handleShowPost} />} />
+        <Route path="/" element={<PostsIndex posts={posts} onShowPost={handleShowPost} />} />
+        <Route path="/posts/:id" element={<PostsShowPage />} />
       </Routes>
-      <Signup />
-      <Login />
-      <PostsNew onCreatePost={handleCreatePost} />
+
       <LogoutLink />
-      <PostsIndex posts={posts} onShowPost={handleShowPost} />
       <Modal show={isPostsShowVisible} onClose={handleClose}>
         <PostsShow post={currentPost} onUpdatePost={handleUpdatePost} onDeletePost={handleDeletePost} />
       </Modal>

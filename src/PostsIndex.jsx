@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export function PostsIndex(props) {
   console.log(props);
   return (
@@ -8,6 +9,9 @@ export function PostsIndex(props) {
           <h2>{post.title}</h2>
           <img src={post.image_url} />
           <button onClick={() => props.onShowPost(post)}>More Info!</button>
+          <Link to={`/posts/${post.id}`} className="btn btn-secondary">
+            View Post
+          </Link>
         </div>
       ))}
     </div>

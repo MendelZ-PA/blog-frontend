@@ -5,13 +5,14 @@ export function PostsNew(props) {
     const params = new FormData(event.target);
     props.onCreatePost(params);
     event.target.reset();
+    window.location.href = "/";
   };
   return (
     <div id="posts-new">
       <h1>New Post</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          Title: <input name="title" type="text" />
+          Title: <input name="title" type="number" />
         </div>
         <div>
           Body: <input name="body" type="text" />
