@@ -8,12 +8,18 @@ export function PostsIndex(props) {
       <div>
         Search Posts:{" "}
         <input
+          list="titles"
           value={searchFilter}
           type="text"
           onChange={(event) => {
             setSearchFilter(event.target.value);
           }}
         />
+        <datalist id="titles">
+          {props.posts.map((post) => (
+            <option key={post.title} value={post.title}></option>
+          ))}
+        </datalist>
       </div>
       <div className="row">
         {props.posts
