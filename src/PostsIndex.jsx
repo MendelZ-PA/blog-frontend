@@ -1,19 +1,40 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 export function PostsIndex(props) {
-  console.log(props);
+  const [searchFilter, setSearchFilter] = useState("");
   return (
     <div id="posts-index">
       <h1>All Posts</h1>
-      {props.posts.map((post) => (
-        <div key={post.id} className="posts">
-          <h2>{post.title}</h2>
-          <img src={post.image_url} />
-          <button onClick={() => props.onShowPost(post)}>More Info!</button>
-          <Link to={`/posts/${post.id}`} className="btn btn-secondary">
-            View Post
-          </Link>
-        </div>
-      ))}
+      <div>
+        Search Posts:{" "}
+        <input
+          value={searchFilter}
+          type="text"
+          onChange={(event) => {
+            setSearchFilter(event.target.value);
+          }}
+        />
+      </div>
+      <div className="row">
+        {props.posts
+          .filter((post) => post.title.toLowerCase().includes(searchFilter.toLowerCase()))
+          .map((post) => (
+            <div key={post.id} className="posts col mb - 3">
+              <div className="card">
+                <img src={post?.image_url} className="card-img-top" />
+                <div className="card-body">
+                  <h2 className="card-title">{post?.title}</h2>
+                  <button className="btn btn-primary" onClick={() => props.onShowPost(post)}>
+                    More Info!
+                  </button>
+                  <Link to={`/posts/${post.id}`} className="btn btn-secondary">
+                    View Post
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+      </div>
     </div>
   );
 }
